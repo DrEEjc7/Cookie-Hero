@@ -1,0 +1,353 @@
+/* --- VARIABLES & THEMES --- */
+:root {
+  --bg-color: #f4f4f9;
+  --text-color: #333;
+  --card-bg-color: #ffffff;
+  --border-color: #e0e0e0;
+  --primary-color: #007bff;
+  --primary-text-color: #ffffff;
+  --subtle-text-color: #666;
+  --code-bg-color: #2d2d2d;
+  --code-text-color: #f8f8f2;
+  --shadow-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+  --card-bg-color: #1e1e1e;
+  --border-color: #333;
+  --primary-color: #0d6efd;
+  --subtle-text-color: #999;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+}
+
+/* --- GLOBAL STYLES --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+  line-height: 1.6;
+}
+
+#app-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+h1,
+h2 {
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--subtle-text-color);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* --- HEADER --- */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+#theme-toggle {
+  background: none;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+#theme-toggle:hover {
+  background-color: var(--card-bg-color);
+}
+
+/* --- MAIN LAYOUT & CARDS --- */
+main {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: var(--card-bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px var(--shadow-color);
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+/* --- FORM ELEMENTS --- */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+select,
+input[type="color"],
+input[type="text"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: 1rem;
+}
+
+input[type="color"] {
+  padding: 0.25rem;
+  height: 48px;
+}
+
+select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* --- BUTTONS --- */
+button {
+  cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+#connect-google-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+}
+
+#connect-google-btn:hover {
+  background-color: #357ae8;
+}
+
+/* --- SPECIFIC SECTIONS --- */
+#account-info {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: var(--bg-color);
+  border-radius: 4px;
+}
+#account-info.hidden {
+  display: none;
+}
+
+/* --- PREVIEW SECTION --- */
+#preview-container {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 1rem;
+}
+
+#cookie-consent-preview {
+  position: absolute;
+  background-color: #333;
+  color: #fff;
+  padding: 15px;
+  font-size: 14px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  max-width: 350px;
+}
+
+#cookie-consent-preview p {
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.cookie-buttons button {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  color: #333;
+  background-color: #f1f1f1;
+}
+
+.cookie-buttons button#accept-btn-preview {
+  background-color: #555;
+  color: #fff;
+}
+
+/* Preview Styles */
+.style-popup {
+  border-radius: 8px;
+}
+.style-header,
+.style-footer {
+  border-radius: 0;
+  width: 100%;
+  max-width: none;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.style-header p,
+.style-footer p {
+  margin: 0;
+}
+.style-bubble {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.style-bubble::before {
+  content: "🍪";
+  font-size: 24px;
+}
+.style-bubble p,
+.style-bubble .cookie-buttons {
+  display: none;
+}
+
+/* Preview Positions */
+.pos-bottom-right {
+  bottom: 20px;
+  right: 20px;
+}
+.pos-bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+.pos-top-right {
+  top: 20px;
+  right: 20px;
+}
+.pos-top-left {
+  top: 20px;
+  left: 20px;
+}
+.pos-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.style-header.pos-top-left {
+  top: 0;
+}
+.style-footer.pos-bottom-left {
+  bottom: 0;
+}
+
+/* --- CODE OUTPUT --- */
+.code-container {
+  position: relative;
+}
+
+#generated-code-output {
+  display: block;
+  background-color: var(--code-bg-color);
+  color: var(--code-text-color);
+  padding: 1rem;
+  border-radius: 4px;
+  font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+  font-size: 0.875rem;
+  white-space: pre-wrap;
+  word-break: break-all;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+#copy-code-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #555;
+  color: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 4px;
+  opacity: 0.7;
+}
+
+#copy-code-btn:hover {
+  opacity: 1;
+}
+
+/* --- FOOTER --- */
+footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--subtle-text-color);
+  font-size: 0.9rem;
+}
+
+/* --- RESPONSIVENESS --- */
+@media (max-width: 600px) {
+  #app-container {
+    padding: 1rem 0.5rem;
+  }
+  h1 {
+    font-size: 1.8rem;
+  }
+  .card {
+    padding: 1rem;
+  }
+}
