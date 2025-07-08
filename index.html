@@ -1,46 +1,75 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Cookie Hero</title>
-        <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    </head>
-    <body>
-        <div id="app-container">
-            <header>
-                <h1>🍪 Cookie Hero</h1>
-                <button id="theme-toggle" aria-label="Toggle light/dark mode">
-                    <i class="fas fa-sun"></i>
-                    <i class="fas fa-moon" style="display: none;"></i>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Hero</title>
+    <link rel="icon" type="image/svg+xml" href="https://ik.imagekit.io/dee7studio/Logos/Cookie%20Hero.svg?updatedAt=1752004287010">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="https://ik.imagekit.io/dee7studio/Logos/Cookie%20Hero.svg?updatedAt=1752004287010" alt="Cookie Hero" width="32" height="32">
+                Cookie Hero
+            </div>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                <i class="fas fa-sun" id="sun-icon"></i>
+                <i class="fas fa-moon" id="moon-icon" style="display: none;"></i>
+            </button>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Cookie Hero</h1>
+            <p>Create GDPR-compliant cookie consent banners in minutes. Connect with Google Search Console for seamless integration.</p>
+        </div>
+
+        <div class="cards-grid">
+            <!-- Connect Account -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-number">1</div>
+                    <h2>Connect Account</h2>
+                </div>
+                <p>Connect your Google account to fetch your Search Console properties and ensure compliance.</p>
+                
+                <button class="btn btn-primary" id="connect-google-btn">
+                    <img src="https://www.google.com/favicon.ico" alt="Google" width="16" height="16">
+                    Connect with Google
                 </button>
-            </header>
 
-            <main>
-                <section id="google-connect" class="card">
-                    <h2>1. Connect Account</h2>
-                    <p>Connect your Google account to fetch your Search Console properties.</p>
-                    <button id="connect-google-btn">
-                        <img src="https://www.google.com/favicon.ico" alt="Google icon" width="16" height="16">
-                        Connect with Google
-                    </button>
-                    <div id="account-info" class="hidden">
-                        <p>Connected as: <strong>demo.user@gmail.com</strong></p>
-                        <label for="search-console-property">Select Property:</label>
-                        <select id="search-console-property">
-                            <option>https://example.com</option>
-                            <option>https://mysite.dev</option>
-                            <option>https://another-project.org</option>
-                        </select>
+                <div class="connection-status hidden" id="account-info">
+                    <div class="status-indicator"></div>
+                    <div>
+                        <strong>Connected as:</strong> demo.user@gmail.com
+                        <div class="form-group" style="margin-top: 1rem;">
+                            <label for="search-console-property">Select Property:</label>
+                            <select class="form-input" id="search-console-property">
+                                <option>https://example.com</option>
+                                <option>https://mysite.dev</option>
+                                <option>https://another-project.org</option>
+                            </select>
+                        </div>
                     </div>
-                </section>
+                </div>
+            </div>
 
-                <section id="customization" class="card">
-                    <h2>2. Customize Your Banner</h2>
+            <!-- Customize Banner -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-number">2</div>
+                    <h2>Customize Banner</h2>
+                </div>
+                <p>Design your cookie consent banner to match your brand and website style.</p>
+
+                <div class="form-grid">
                     <div class="form-group">
                         <label for="banner-style">Style</label>
-                        <select id="banner-style">
+                        <select class="form-input" id="banner-style">
                             <option value="popup">Popup</option>
                             <option value="bubble">Bubble</option>
                             <option value="header">Header</option>
@@ -49,7 +78,7 @@
                     </div>
                     <div class="form-group">
                         <label for="banner-position">Position</label>
-                        <select id="banner-position">
+                        <select class="form-input" id="banner-position">
                             <option value="bottom-right">Bottom Right</option>
                             <option value="bottom-left">Bottom Left</option>
                             <option value="top-right">Top Right</option>
@@ -59,37 +88,122 @@
                     </div>
                     <div class="form-group">
                         <label for="banner-color">Primary Color</label>
-                        <input type="color" id="banner-color" value="#333333">
+                        <input type="color" class="form-input color-input" id="banner-color" value="#333333">
                     </div>
-                </section>
+                </div>
+            </div>
 
-                <section id="preview-section" class="card">
-                    <h2>3. Preview</h2>
-                    <div id="preview-container">
-                        <div id="cookie-consent-preview">
-                            <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
-                            <div class="cookie-buttons">
-                                <button id="accept-btn-preview">Accept</button>
-                                <button id="decline-btn-preview">Decline</button>
+            <!-- Preview -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-number">3</div>
+                    <h2>Preview</h2>
+                </div>
+                <p>See how your cookie banner will look on your actual website or use our demo.</p>
+
+                <div class="form-group" style="margin-bottom: 1.5rem;">
+                    <label for="website-url">Preview on your website (optional)</label>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <input 
+                            type="url" 
+                            class="form-input" 
+                            id="website-url" 
+                            placeholder="https://yourwebsite.com"
+                            style="flex: 1;"
+                        >
+                        <button class="btn btn-secondary" id="load-website-btn">
+                            <i class="fas fa-external-link-alt"></i>
+                            Load Site
+                        </button>
+                        <button class="btn btn-secondary" id="demo-preview-btn">
+                            <i class="fas fa-desktop"></i>
+                            Demo
+                        </button>
+                    </div>
+                    <small style="color: var(--text-muted); font-size: 0.75rem; margin-top: 0.25rem; display: block;">
+                        Try: https://example.com or use our demo preview
+                    </small>
+                </div>
+
+                <div class="preview-container" id="preview-container">
+                    <div class="preview-mode-indicator" id="preview-mode-indicator">
+                        <i class="fas fa-desktop"></i>
+                        <span>Demo Preview</span>
+                    </div>
+                    
+                    <iframe 
+                        id="website-iframe" 
+                        style="display: none; width: 100%; height: 100%; border: none; border-radius: 8px;"
+                        sandbox="allow-scripts allow-same-origin"
+                    ></iframe>
+                    
+                    <div class="demo-preview" id="demo-preview">
+                        <div class="demo-website">
+                            <div class="demo-header">
+                                <div class="demo-nav">
+                                    <div class="demo-logo">YourSite</div>
+                                    <div class="demo-menu">
+                                        <span>Home</span>
+                                        <span>About</span>
+                                        <span>Contact</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="demo-content">
+                                <h1>Welcome to Your Website</h1>
+                                <p>This is how your cookie banner will appear on your actual site.</p>
+                                <div class="demo-cards">
+                                    <div class="demo-card"></div>
+                                    <div class="demo-card"></div>
+                                    <div class="demo-card"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </section>
 
-                <section id="code-output" class="card">
-                    <h2>4. Get Your Code</h2>
-                    <p>Copy and paste this code into your website before the closing `</body>` tag.</p>
-                    <div class="code-container">
-                        <button id="copy-code-btn" aria-label="Copy code"><i class="fas fa-copy"></i></button>
-                        <pre><code id="generated-code-output">&lt;!-- Cookie Hero Code --&gt;</code></pre>
+                    <div class="cookie-preview pos-bottom-right" id="cookie-consent-preview">
+                        <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+                        <div class="cookie-buttons">
+                            <button class="cookie-btn cookie-btn-accept" id="accept-btn-preview">Accept</button>
+                            <button class="cookie-btn cookie-btn-decline" id="decline-btn-preview">Decline</button>
+                        </div>
                     </div>
-                </section>
-            </main>
+                </div>
 
-            <footer>
-                <p>Copyright © <span id="current-year"></span> • Designed with ❤️ by <a href="https://dee7studio.com" target="_blank" rel="noopener noreferrer">Dee7 Studio</a></p>
-            </footer>
+                <div class="preview-error" id="preview-error" style="display: none;">
+                    <div style="text-align: center; padding: 2rem; color: var(--text-muted);">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                        <p>This website cannot be previewed due to security restrictions.</p>
+                        <p style="font-size: 0.875rem;">Try the demo preview instead.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Get Code -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-number">4</div>
+                    <h2>Get Your Code</h2>
+                </div>
+                <p>Copy and paste this code into your website before the closing &lt;/body&gt; tag.</p>
+
+                <div class="code-container">
+                    <div class="code-header">
+                        <h3>Generated Code</h3>
+                    </div>
+                    <button class="copy-btn" id="copy-code-btn" aria-label="Copy code">
+                        <i class="fas fa-copy"></i>
+                    </button>
+                    <pre class="code-output" id="generated-code-output"><!-- Cookie Hero Code --></pre>
+                </div>
+            </div>
         </div>
+    </div>
 
-        <script src="js/app.js"></script>
-    </body>
+    <footer class="footer">
+        <p>Copyright © <span id="current-year"></span> • Designed with ❤️ by <a href="https://dee7studio.com" target="_blank" rel="noopener noreferrer">Dee7 Studio</a></p>
+    </footer>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
