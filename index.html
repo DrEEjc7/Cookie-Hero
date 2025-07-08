@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Cookie Hero</title>
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body>
+        <div id="app-container">
+            <header>
+                <h1>🍪 Cookie Hero</h1>
+                <button id="theme-toggle" aria-label="Toggle light/dark mode">
+                    <i class="fas fa-sun"></i>
+                    <i class="fas fa-moon" style="display: none;"></i>
+                </button>
+            </header>
+
+            <main>
+                <section id="google-connect" class="card">
+                    <h2>1. Connect Account</h2>
+                    <p>Connect your Google account to fetch your Search Console properties.</p>
+                    <button id="connect-google-btn">
+                        <img src="https://www.google.com/favicon.ico" alt="Google icon" width="16" height="16">
+                        Connect with Google
+                    </button>
+                    <div id="account-info" class="hidden">
+                        <p>Connected as: <strong>demo.user@gmail.com</strong></p>
+                        <label for="search-console-property">Select Property:</label>
+                        <select id="search-console-property">
+                            <option>https://example.com</option>
+                            <option>https://mysite.dev</option>
+                            <option>https://another-project.org</option>
+                        </select>
+                    </div>
+                </section>
+
+                <section id="customization" class="card">
+                    <h2>2. Customize Your Banner</h2>
+                    <div class="form-group">
+                        <label for="banner-style">Style</label>
+                        <select id="banner-style">
+                            <option value="popup">Popup</option>
+                            <option value="bubble">Bubble</option>
+                            <option value="header">Header</option>
+                            <option value="footer">Footer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="banner-position">Position</label>
+                        <select id="banner-position">
+                            <option value="bottom-right">Bottom Right</option>
+                            <option value="bottom-left">Bottom Left</option>
+                            <option value="top-right">Top Right</option>
+                            <option value="top-left">Top Left</option>
+                            <option value="center">Center</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="banner-color">Primary Color</label>
+                        <input type="color" id="banner-color" value="#333333">
+                    </div>
+                </section>
+
+                <section id="preview-section" class="card">
+                    <h2>3. Preview</h2>
+                    <div id="preview-container">
+                        <div id="cookie-consent-preview">
+                            <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+                            <div class="cookie-buttons">
+                                <button id="accept-btn-preview">Accept</button>
+                                <button id="decline-btn-preview">Decline</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="code-output" class="card">
+                    <h2>4. Get Your Code</h2>
+                    <p>Copy and paste this code into your website before the closing `</body>` tag.</p>
+                    <div class="code-container">
+                        <button id="copy-code-btn" aria-label="Copy code"><i class="fas fa-copy"></i></button>
+                        <pre><code id="generated-code-output">&lt;!-- Cookie Hero Code --&gt;</code></pre>
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+                <p>Copyright © <span id="current-year"></span> • Designed with ❤️ by <a href="https://dee7studio.com" target="_blank" rel="noopener noreferrer">Dee7 Studio</a></p>
+            </footer>
+        </div>
+
+        <script src="js/app.js"></script>
+    </body>
